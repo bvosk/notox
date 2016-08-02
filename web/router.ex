@@ -17,7 +17,7 @@ defmodule Notox.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/notes", NoteController, :index
+    resources "/notes", NoteController, only: [:index]
   end
 
   # Other scopes may use custom stacks.
