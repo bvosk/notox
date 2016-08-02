@@ -1,0 +1,10 @@
+<h1>Listing Notes</h1>
+
+<ul>
+  <%= for note <- @notes do %>
+    <li>
+      <div><b><%= note.title %></b></div>
+      <div><%= note.description %></div>
+    </li>
+  <% end %>
+</ul>
