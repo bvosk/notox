@@ -3,6 +3,6 @@ defmodule Notox.NoteController do
 
   def index(conn, _params) do
     notes = Repo.all(Notox.Note)
-    render conn, "index.html", notes: notes
+    render conn, :index, notes: notes
   end
 end
