@@ -3,8 +3,8 @@ defmodule Notox.Repo.Migrations.CreateNote do
 
   def change do
     create table(:notes) do
-      add :title, :string
-      add :description, :string
+      add :title, :string, null: false
+      add :description, :string, null: false
 
       timestamps
     end
