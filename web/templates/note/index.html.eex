@@ -1,0 +1,10 @@
+<h1>Listing Notes</h1>
+
+<table class="table">
+  <%= for note <- @notes do %>
+    <tr>
+      <td><b><%= note.title %></b></td>
+      <td><%= note.description %></td>
+    </tr>
+  <% end %>
+</table>
