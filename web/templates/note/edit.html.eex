@@ -1,0 +1,7 @@
+<h1>Edit Note</h1>
+
+<%= render "form.html", 
+  conn: @conn, 
+  changeset: @changeset, 
+  action: :update , 
+  submit_text: "Update Note" %>
