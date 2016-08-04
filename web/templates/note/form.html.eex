@@ -1,13 +1,19 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, note_path(@conn, @action), fn f -> %>
+
+  <%= if @changeset.action do %>
+    <p>Something went wrong! Please check the errors below.</p>
+  <% end %>
 
   <div>
     <%= label f, :title %>
     <%= text_input f, :title %>
+    <%= error_tag f, :title %>
   </div>
 
   <div>
     <%= label f, :description %>
     <%= text_input f, :description %>
+    <%= error_tag f, :description %>
   </div>
 
   <%= submit @submit_text %>

@@ -17,4 +17,16 @@ defmodule Notox.NoteController do
     changeset = Note.changeset(note)
     render conn, :edit, note: note, changeset: changeset
   end
+
+  def create(conn, %{"note" => note_params}) do
+    changeset = Note.changeset(%Note{}, note_params)
+    case Repo.insert(changeset) do
+      {:ok, note} ->
+        conn
+        |> put_flash(:info, "Note created!")
+        |> redirect(to: note_path(conn, :index))
+      {:error, changeset} ->
+        render(conn, :new, changeset: changeset)
+    end
+  end
 end
