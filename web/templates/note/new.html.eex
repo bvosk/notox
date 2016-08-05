@@ -3,5 +3,5 @@
 <%= render "form.html", 
   conn: @conn, 
   changeset: @changeset, 
-  action: :create , 
+  action: note_path(@conn, :create),
   submit_text: "Create Note" %>

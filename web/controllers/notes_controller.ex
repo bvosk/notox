@@ -21,12 +21,26 @@ defmodule Notox.NoteController do
   def create(conn, %{"note" => note_params}) do
     changeset = Note.changeset(%Note{}, note_params)
     case Repo.insert(changeset) do
-      {:ok, note} ->
+      {:ok, _note} ->
         conn
         |> put_flash(:info, "Note created!")
         |> redirect(to: note_path(conn, :index))
       {:error, changeset} ->
         render(conn, :new, changeset: changeset)
     end
+  end
+
+  def update(conn, %{"id" => id, "note" => note_params}) do
+   note = Repo.get!(Note, id)
+   changeset = Note.changeset(note, note_params)
+
+   case Repo.update(changeset) do
+     {:ok, _note} ->
+       conn
+       |> put_flash(:info, "Note updated.")
+       |> redirect(to: note_path(conn, :index))
+     {:error, changeset} ->
+       render(conn, :edit, note: note, changeset: changeset)
+   end
   end
 end
