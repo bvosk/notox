@@ -5,4 +5,4 @@
 <p><%= @note.description %></p>
 
 <%= link "Edit", to: note_path(@conn, :edit, @note.id) %> |
-<%= link "Delete", to: note_path(@conn, :delete, @note.id) %>
+<%= link "Delete", to: note_path(@conn, :delete, @note.id), method: :delete %>
