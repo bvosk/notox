@@ -43,4 +43,10 @@ defmodule Notox.NoteController do
        render(conn, :edit, note: note, changeset: changeset)
    end
   end
+
+  def show(conn, %{"id" => id}) do
+    note = Repo.get!(Note, id)
+
+    render conn, :show, note: note
+  end
 end
