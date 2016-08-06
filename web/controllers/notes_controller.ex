@@ -49,4 +49,13 @@ defmodule Notox.NoteController do
 
     render conn, :show, note: note
   end
+
+  def delete(conn, %{"id" => id}) do
+    Repo.get!(Note, id)
+    |> Repo.delete
+
+    conn
+    |> put_flash(:info, "Note deleted.")
+    |> redirect(to: note_path(conn, :index))
+  end
 end
