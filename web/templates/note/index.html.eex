@@ -1,10 +1,19 @@
 <h1>Listing Notes</h1>
 
+<p><%= link "New note", to: note_path(@conn, :new) %></p>
+
 <ul>
   <%= for note <- @notes do %>
     <li>
-      <div><b><%= note.title %></b></div>
-      <div><%= note.description %></div>
+
+      <div>
+        <b><%= link note.title, to: note_path(@conn, :show, note.id) %></b> (<%= note.id %>)
+      </div>
+
+      <div>
+        <%= note.description %>
+      </div>
+
     </li>
   <% end %>
 </ul>
