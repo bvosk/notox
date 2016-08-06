@@ -18,5 +18,3 @@
 
   <%= submit @submit_text %>
 <% end %>
-
-<%= link "Cancel", to: note_path(@conn, :index)%>

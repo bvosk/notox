@@ -5,3 +5,5 @@
   changeset: @changeset, 
   action: note_path(@conn, :create),
   submit_text: "Create Note" %>
+
+<%= link "Cancel", to: note_path(@conn, :index)%>
