@@ -1,6 +1,4 @@
-<h1>
-  <b><%= @note.title %></b> (<%= @note.id %>)
-</h1>
+<h1> <%= @note.title %> (<%= @note.id %>) </h1>
 
 <p><%= @note.description %></p>
 
