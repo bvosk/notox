@@ -18,3 +18,5 @@
 
   <%= submit @submit_text %>
 <% end %>
+
+<%= @cancel_link %>
