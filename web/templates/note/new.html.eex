@@ -4,4 +4,6 @@
   conn: @conn, 
   changeset: @changeset, 
   action: note_path(@conn, :create),
-  submit_text: "Create Note" %>
+  submit_text: "Create Note",
+  cancel_link:  link "Cancel", 
+                to: note_path(@conn, :index) %>
