@@ -2,6 +2,14 @@ defmodule Notox.NoteController do
   use Notox.Web, :controller
   alias Notox.Note
 
+  def index(conn, %{"search" => %{"query" => query}}) do
+    notes =
+      Note
+      |> Note.search(query)
+      |> Repo.all
+    render conn, :index, notes: notes
+  end
+
   def index(conn, _params) do
     notes = Repo.all(Notox.Note)
     render conn, :index, notes: notes

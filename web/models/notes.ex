@@ -20,4 +20,10 @@ defmodule Notox.Note do
     |> cast(params, @optional_fields)
     |> validate_required(@required_fields)
   end
+
+  def search(query, term) do
+    like_term = "%" <> term <> "%"
+    from n in query,
+      where: ilike(n.title, ^like_term)
+  end
 end
