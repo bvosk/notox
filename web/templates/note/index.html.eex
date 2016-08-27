@@ -2,6 +2,13 @@
 
 <p><%= link "New note", to: note_path(@conn, :new) %></p>
 
+<%= form_for @conn, note_path(@conn, :index), [method: :get, as: :search], fn f -> %>
+  <%= label f, :search %>
+  <%= text_input f, :query %>
+
+  <%= submit "Search" %>
+<% end %>
+
 <ul>
   <%= for note <- @notes do %>
     <li>
