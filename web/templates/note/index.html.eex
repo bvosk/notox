@@ -11,7 +11,7 @@
       </div>
 
       <div>
-        <%= note.description %>
+        <%= render_markdown(note.description) %>
       </div>
 
     </li>

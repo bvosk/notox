@@ -1,6 +1,6 @@
 <h1><%= @note.title %> (<%= @note.id %>)</h1>
 
-<p><%= @note.description %></p>
+<p><%= render_markdown(@note.description) %></p>
 
 <%= link "Back", to: note_path(@conn, :index) %> |
 <%= link "Edit", to: note_path(@conn, :edit, @note.id) %> |
