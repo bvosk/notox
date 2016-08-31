@@ -1,0 +1,33 @@
+<header class="header">
+  <nav role="navigation">
+    <ul class="nav nav-pills pull-right">
+
+      <%= if @current_user do %>
+        <li>
+          <%= link "Notes", to: note_path(@conn, :index) %>
+        </li>
+        <li>
+          <%= link "Account", to: account_path(@conn, :edit) %>
+        </li>
+      <% else %>
+        <li><%= link "Login", to: session_path(@conn, :new) %></li>
+        <li><%= link "Register", to: user_path(@conn, :new) %></li>
+      <% end %>
+
+    </ul>
+  </nav>
+  <span class="logo"></span>
+
+  <%= if @current_user do %>
+    <div>
+      <span>
+        Logged in as <%= link @current_user.username,
+          to: user_path(@conn, :show, @current_user) %>
+        (<%= link "Logout",
+          to: session_path(@conn, :delete),
+          method: :delete %>)
+      </span>
+    </div>
+  <% end %>
+
+</header>

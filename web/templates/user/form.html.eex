@@ -1,0 +1,22 @@
+<%= form_for @changeset, @action, fn f -> %>
+
+  <%= if @changeset.action do %>
+    <p>Something went wrong! Please check the errors below.</p>
+  <% end %>
+
+  <div>
+    <%= label f, :username %>
+    <%= text_input f, :username %>
+    <%= error_tag f, :username %>
+  </div>
+
+  <div>
+    <%= label f, :password %>
+    <%= password_input  f, :password %>
+    <%= error_tag f, :password %>
+  </div>
+
+  <%= submit @submit_text %>
+<% end %>
+
+<%= @cancel_link %>

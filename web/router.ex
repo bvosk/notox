@@ -7,6 +7,7 @@ defmodule Notox.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Notox.Auth, repo: Notox.Repo
   end
 
   pipeline :api do
@@ -17,6 +18,14 @@ defmodule Notox.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    resources "/users", UserController,
+      only: [:new, :create, :show]
+    resources "/account", AccountController,
+      only: [:show, :edit, :update, :delete],
+      singleton: true
+    resources "/session", SessionController,
+      only: [:new, :create, :delete],
+      singleton: true
     resources "/notes", NoteController
   end
 

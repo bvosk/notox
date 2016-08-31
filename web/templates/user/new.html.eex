@@ -1,0 +1,9 @@
+<h1>New User</h1>
+
+<%= render "form.html",
+  conn: @conn,
+  changeset: @changeset,
+  action: user_path(@conn, :create),
+  submit_text: "Create User",
+  cancel_link: link("Cancel",
+    to: page_path(@conn, :index)) %>

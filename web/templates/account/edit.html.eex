@@ -1,0 +1,15 @@
+<h1>Edit User</h1>
+
+<%= render Notox.UserView, "form.html",
+  conn: @conn,
+  changeset: @changeset,
+  action: account_path(@conn, :update),
+  submit_text: "Update User",
+  cancel_link: link("Cancel",
+    to: account_path(@conn, :show)) %>
+
+<p>
+  <%= link "Delete account",
+    to: account_path(@conn, :delete),
+    method: :delete %>
+</p>
