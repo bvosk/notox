@@ -10,23 +10,33 @@ defmodule Notox.Router do
     plug Notox.Auth, repo: Notox.Repo
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :require_user do
+    plug Notox.RequireUser
   end
 
   scope "/", Notox do
-    pipe_through :browser # Use the default browser stack
+    pipe_through [:browser]
 
-    get "/", PageController, :index
     resources "/users", UserController,
       only: [:new, :create, :show]
     resources "/account", AccountController,
       only: [:show, :edit, :update, :delete],
       singleton: true
-    resources "/session", SessionController,
-      only: [:new, :create, :delete],
+    resources "/signout", SessionController,
+      as: :sign_out,
+      only: [:delete],
       singleton: true
     resources "/notes", NoteController
+  end
+
+  scope "/", Notox do
+    pipe_through [:browser] 
+
+    get "/", PageController, :index 
+    resources "/signin", SessionController,
+      as: :sign_in,
+      only: [:new, :create],
+      singleton: true
   end
 
   # Other scopes may use custom stacks.
